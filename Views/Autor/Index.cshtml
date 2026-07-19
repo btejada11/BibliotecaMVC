@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EjercicioPractica_S1.Models.Autor>
+
+@{
+    ViewData["Title"] = "Lista de Autores";
+}
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card bg-light p-3">
+            <h5>Ingrese el ID del Autor</h5>
+
+            <form asp-controller="Autor" asp-action="ProcesarAccionId" method="get">
+                <div class="input-group">
+                    <span class="input-group-text">ID Autor:</span>
+                    <input type="number" name="id" class="form-control" placeholder="Ej: 5" required min="1" />
+
+                    <button type="submit" name="accion" value="Edit" class="btn btn-primary">Editar</button>
+                    <button type="submit" name="accion" value="Delete" class="btn btn-danger">Eliminar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <a asp-controller="Autor" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Crear Nuevo Autor
+    </a>
+</div>
+
+</br>
+<h1>@ViewData["Title"]</h1>
+
+<p>Hay @Model.Count() autores registrados.</p>
+
+<div class="row">
+    @foreach (var autor in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+
+                    <h5 class="card-title">@autor.Nombre</h5>
+
+                    <p class="card-text">
+                        <strong>ID:</strong> @autor.ID
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Nacionalidad:</strong> @autor.Nacionalidad
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Fecha de Nacimiento:</strong>
+                        @autor.FechaNacimiento.ToShortDateString()
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Activo:</strong>
+                        @(autor.Activo ? "Sí" : "No")
+                    </p>
+                    <a asp-action="Details" asp-route-id="@autor.ID" class="btn btn-primary">Ver Detalles</a>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

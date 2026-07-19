@@ -1,0 +1,49 @@
+﻿@model EjercicioPractica_S1.Models.Libro
+
+@{
+    ViewData["Title"] = "Eliminar Libro";
+}
+
+<h1 class="text-danger">@ViewData["Title"]</h1>
+<p class="fs-5">¿Está seguro de que desea eliminar este libro?</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card border-danger mb-3">
+            <div class="card-header bg-danger text-white">
+                <h5 class="card-title mb-0">Confirmación de Eliminación</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Vista previa de la imagen si existe -->
+                    @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                    {
+                        <div class="col-md-4 text-center mb-3 mb-md-0">
+                            <img src="@Url.Content(Model.ImagenUrl)" alt="@Model.Titulo" class="img-fluid rounded border" style="max-height: 140px; object-fit: cover;" />
+                        </div>
+                    }
+
+                    <!-- Detalles del libro -->
+                    <div class="@(!string.IsNullOrEmpty(Model.ImagenUrl) ? "col-md-8" : "col-12")">
+                        <h4>@Model.Titulo</h4>
+                        <p class="mb-1"><strong>ID:</strong> @Model.ID</p>
+                        <p class="mb-1"><strong>Autor:</strong> @Model.Autor</p>
+                        <p class="mb-1"><strong>Categoría:</strong> @Model.Categoria</p>
+                        <p class="mb-1"><strong>Precio:</strong> $@Model.Precio.ToString("F2")</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+                <form asp-controller="Libros" asp-action="Delete" method="post">
+                 
+                    <input type="hidden" asp-for="ID" />
+
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Confirmar Eliminación
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

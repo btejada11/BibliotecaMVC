@@ -1,0 +1,128 @@
+﻿@*
+@{
+    string nombreAsignatura = "Programación Web II :D";
+    int numero = 10;
+    int contador = 1;
+    List<string> categorias = new List<string>()
+    {
+        "Programacion",
+        "Novela",
+        "Historia",
+        "Bases De Datos"
+    };
+}
+
+<h2>@nombreAsignatura</h2>
+<p>Número: @numero</p>
+
+<hr />
+<hr />
+<hr />
+<p>Uso del IF</p>
+@if (numero>=18) {
+    <h3>Mayor De edad</h3>
+} else {
+    <h3>Menor De edad</h3>
+}
+<hr />
+<hr />
+<hr />
+<p>Uso del FOR</p>
+@for (int i = 1; i < numero; i++) {
+    <p>Iteración: @i</p>
+}
+<hr />
+<hr />
+<hr />
+<p>Uso del WHILE</p>
+@while (contador <= numero) {
+    <p>Contador: @contador</p>
+    contador++;
+}
+<hr />
+<hr />
+<hr />
+<hr />
+<p>Uso del FOR EACH</p>
+@foreach(var categoria in categorias )
+{
+    <li>@categoria</li>
+    
+}*@
+
+@using EjercicioPractica_S1.Models
+
+@{
+    List<Libro> libros = ViewBag.Libros;
+}
+
+<h1>Lista de Libros</h1>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card bg-light p-3">
+            <h5>Ingrese el ID del Libro</h5>
+
+            <form asp-controller="Libros" asp-action="ProcesarAccionId" method="get">
+                <div class="input-group">
+                    <span class="input-group-text">ID Libro:</span>
+                    <input type="number" name="id" class="form-control" placeholder="Ej: 5" required min="1" />
+
+                    <button type="submit" name="accion" value="Edit" class="btn btn-primary">Editar</button>
+                    <button type="submit" name="accion" value="Delete" class="btn btn-danger">Eliminar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <a asp-controller="Libros" asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Crear Nuevo Libro
+    </a>
+</div>
+
+@if (libros != null && libros.Any())
+{
+    @foreach (var libro in libros)
+    {
+        <table class="table table-bordered mb-3">
+            <tr>
+                <!-- Columna para la imagen -->
+                <td style="width: 160px; text-align: center; vertical-align: middle;">
+                    @if (!string.IsNullOrEmpty(libro.ImagenUrl))
+                    {
+                        <!-- Corrección con Url.Content -->
+                        <img src="@Url.Content("~" + libro.ImagenUrl)" alt="@libro.Titulo" class="img-fluid rounded" style="max-height: 150px; object-fit: cover;" />
+                    }
+                    else
+                    {
+                        <img src="~/images/default.png" alt="Sin imagen" class="img-fluid rounded" style="max-height: 150px; object-fit: cover;" />
+                    }
+                </td>
+                <td>
+                    <h2>@libro.Titulo</h2>
+                    <p><strong>ID:</strong> @libro.ID</p>
+                    <p><strong>Autor:</strong> @libro.Autor</p>
+                    <p><strong>Género:</strong> @libro.Categoria</p>
+                    <p><strong>Precio:</strong> $@libro.Precio.ToString("F2")</p>
+                    <p>
+                        @if (libro.Disponible)
+                        {
+                            <span class="badge bg-success">Disponible</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">No Disponible</span>
+                        }
+                    </p>
+                </td>
+            </tr>
+        </table>
+    }
+}
+else
+{
+    <div class="alert alert-info">No hay libros registrados para mostrar.</div>
+}
