@@ -1,0 +1,33 @@
+﻿@using EjercicioPractica_S1.Models;
+@using EjercicioPractica_S1.Controllers;
+
+
+@{
+    List<Autor> autores = ViewBag.Autor;
+}
+
+<h1>Lista de Autores</h1>
+
+@foreach (var autor in autores)
+{
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <P>Nombre: @autor.Nombre</P>
+                <p>Nacionalidad: @autor.Nacionalidad</p>
+                <p>Fecha de Nacimiento: @autor.FechaNacimiento.ToShortDateString()</p>
+
+                <p>
+                    @if (autor.Activo)
+                    {
+                        <span class="badge bg-success">Activo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Inactivo</span>
+                    }
+                </p>
+            </td>
+        </tr>
+    </table>
+}
