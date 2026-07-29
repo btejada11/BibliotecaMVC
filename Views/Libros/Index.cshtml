@@ -55,6 +55,7 @@
 @{
     List<Libro> libros = ViewBag.Libros;
 }
+<h1>Lista de Libros</h1>
 
 <h1>Lista de Libros Bonitos</h1>
 
@@ -85,10 +86,9 @@
 
 @if (libros != null && libros.Any())
 {
-    @foreach (var libro in libros)
-    {
-        <table class="table table-bordered mb-3">
-            <tr>
+@foreach (var libro in libros)
+{
+    <tr>
                 <!-- Columna para la imagen -->
                 <td style="width: 160px; text-align: center; vertical-align: middle;">
                     @if (!string.IsNullOrEmpty(libro.ImagenUrl))
@@ -101,28 +101,19 @@
                         <img src="~/images/default.png" alt="Sin imagen" class="img-fluid rounded" style="max-height: 150px; object-fit: cover;" />
                     }
                 </td>
-                <td>
-                    <h2>@libro.Titulo</h2>
-                    <p><strong>ID:</strong> @libro.ID</p>
-                    <p><strong>Autor:</strong> @libro.Autor</p>
-                    <p><strong>Género:</strong> @libro.Categoria</p>
-                    <p><strong>Precio:</strong> $@libro.Precio.ToString("F2")</p>
-                    <p>
-                        @if (libro.Disponible)
-                        {
-                            <span class="badge bg-success">Disponible</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-danger">No Disponible</span>
-                        }
-                    </p>
-                </td>
-            </tr>
-        </table>
-    }
-}
-else
-{
-    <div class="alert alert-info">No hay libros registrados para mostrar.</div>
+        <td>
+            <h2>@libro.Titulo</h2>
+            <p>
+                @if (libro.Disponible)
+                {
+                }
+                else
+                {
+                }       
+
+
+            </p>
+        </td>
+    </tr>
+    </table>
 }

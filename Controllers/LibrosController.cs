@@ -10,58 +10,46 @@ namespace EjercicioPractica_S1.Controllers
 {
     public class LibrosController : Controller
     {
-        private readonly IWebHostEnvironment _environment;
-
-        
-        public LibrosController(IWebHostEnvironment environment)
         {
-            _environment = environment;
-        }
+            {
+                new Libro
+                {
+                    ID = 1,
+                    Titulo = "Cien Años de Soledad",
+                    Autor = "Gabriel García Márquez",
+                    Categoria = "Novela",
+                    Precio = 19.99m,
+                },
 
-        
-        private static List<Libro> libros = new List<Libro>()
-        {
-            new Libro
-            {
-                ID = 1,
-                Titulo = "Cien Años de Soledad",
-                Autor = "Gabriel García Márquez",
-                Categoria = "Novela",
-                Precio = 19.99m,
-                Disponible = true,
-                ImagenUrl = "/images/cien_anios.jpg"
-            },
-            new Libro
-            {
-                ID = 2,
-                Titulo = "El Principito",
-                Autor = "Antoine de Saint-Exupéry",
-                Categoria = "Fábula",
-                Precio = 9.99m,
-                Disponible = true,
-                ImagenUrl = "/images/principito.jpg"
-            },
-            new Libro
-            {
-                ID = 3,
-                Titulo = "1984",
-                Autor = "George Orwell",
-                Categoria = "Distopía",
-                Precio = 14.99m,
-                Disponible = false,
-                ImagenUrl = "/images/1984.jpg"
-            },
-            new Libro
-            {
-                ID = 4,
-                Titulo = "Don Quijote de la Mancha",
-                Autor = "Miguel de Cervantes",
-                Categoria = "Novela",
-                Precio = 24.99m,
-                Disponible = true,
-                ImagenUrl = "/images/quijote.jpg"
-            }
-        };
+                new Libro
+                {
+                    ID = 2,
+                    Titulo = "El Principito",
+                    Autor = "Antoine de Saint-Exupéry",
+                    Categoria = "Fábula",
+                    Precio = 9.99m,
+                },
+
+                new Libro
+                {
+                    ID = 3,
+                    Titulo = "1984",
+                    Autor = "George Orwell",
+                    Categoria = "Distopía",
+                    Precio = 14.99m,
+                }, 
+
+                new Libro
+                {
+                    ID = 4,
+                    Titulo = "Don Quijote de la Mancha",
+                    Autor = "Miguel de Cervantes",
+                    Categoria = "Novela",
+                    Precio = 24.99m,
+                }
+
+
+            };
 
         public IActionResult Index()
         {
