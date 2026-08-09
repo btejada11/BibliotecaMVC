@@ -2,54 +2,31 @@
 using EjercicioPractica_S1.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Hosting; 
-using Microsoft.AspNetCore.Http;    
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using System.IO;
 
 namespace EjercicioPractica_S1.Controllers
 {
     public class LibrosController : Controller
     {
+        // Se declara la interfaz para manejar las rutas del servidor
+        private readonly IWebHostEnvironment _environment;
+
+        // Lista estática simulando la base de datos con su nombre correcto 'libros'
+        private static List<Libro> libros = new List<Libro>
         {
-            {
-                new Libro
-                {
-                    ID = 1,
-                    Titulo = "Cien Años de Soledad",
-                    Autor = "Gabriel García Márquez",
-                    Categoria = "Novela",
-                    Precio = 19.99m,
-                },
+            new Libro { ID = 1, Titulo = "Cien Años de Soledad", Autor = "Gabriel García Márquez", Categoria = "Novela", Precio = 19.99m, Disponible = true, ImagenUrl = "/images/cien_anios.jpg" },
+            new Libro { ID = 2, Titulo = "El Principito", Autor = "Antoine de Saint-Exupéry", Categoria = "Fábula", Precio = 9.99m, Disponible = true, ImagenUrl = "/images/principito.jpg" },
+            new Libro { ID = 3, Titulo = "1984", Autor = "George Orwell", Categoria = "Distopía", Precio = 14.99m, Disponible = true, ImagenUrl = "/images/1984.jpg" },
+            new Libro { ID = 4, Titulo = "Don Quijote de la Mancha", Autor = "Miguel de Cervantes", Categoria = "Novela", Precio = 24.99m, Disponible = true, ImagenUrl = "/images/quijote.jpg" }
+        };
 
-                new Libro
-                {
-                    ID = 2,
-                    Titulo = "El Principito",
-                    Autor = "Antoine de Saint-Exupéry",
-                    Categoria = "Fábula",
-                    Precio = 9.99m,
-                },
-
-                new Libro
-                {
-                    ID = 3,
-                    Titulo = "1984",
-                    Autor = "George Orwell",
-                    Categoria = "Distopía",
-                    Precio = 14.99m,
-                }, 
-
-                new Libro
-                {
-                    ID = 4,
-                    Titulo = "Don Quijote de la Mancha",
-                    Autor = "Miguel de Cervantes",
-                    Categoria = "Novela",
-                    Precio = 24.99m,
-                }
-
-
-            };
+        // Constructor para inyectar IWebHostEnvironment requerido en la carga de imágenes
+        public LibrosController(IWebHostEnvironment environment)
+        {
+            _environment = environment;
+        }
 
         public IActionResult Index()
         {
@@ -71,11 +48,9 @@ namespace EjercicioPractica_S1.Controllers
                 return View(libro);
             }
 
-            
             if (archivoImagen != null && archivoImagen.Length > 0)
             {
                 string carpetaUploads = Path.Combine(_environment.WebRootPath, "images");
-
                 if (!Directory.Exists(carpetaUploads))
                 {
                     Directory.CreateDirectory(carpetaUploads);
@@ -92,16 +67,13 @@ namespace EjercicioPractica_S1.Controllers
                 libro.ImagenUrl = "/images/" + nombreArchivo;
             }
 
-           
             int nuevoId = libros.Any() ? libros.Max(l => l.ID) + 1 : 1;
             libro.ID = nuevoId;
-
             libros.Add(libro);
 
             return RedirectToAction(nameof(Index));
         }
 
-       
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -110,11 +82,9 @@ namespace EjercicioPractica_S1.Controllers
             {
                 return NotFound();
             }
-
-            return View(libro); 
+            return View(libro);
         }
 
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Libro libro)
@@ -130,7 +100,6 @@ namespace EjercicioPractica_S1.Controllers
                 return NotFound();
             }
 
-          
             libroExistente.Titulo = libro.Titulo;
             libroExistente.Autor = libro.Autor;
             libroExistente.Categoria = libro.Categoria;
@@ -140,7 +109,6 @@ namespace EjercicioPractica_S1.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -149,11 +117,9 @@ namespace EjercicioPractica_S1.Controllers
             {
                 return NotFound();
             }
-
             return View(libro);
         }
 
-        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
@@ -168,7 +134,6 @@ namespace EjercicioPractica_S1.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       
         [HttpGet]
         public IActionResult ProcesarAccionId(int id, string accion)
         {
@@ -191,3 +156,4 @@ namespace EjercicioPractica_S1.Controllers
         }
     }
 }
+

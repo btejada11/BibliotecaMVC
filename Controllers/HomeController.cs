@@ -17,6 +17,11 @@ namespace EjercicioPractica_S1.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
         public IActionResult Usuarios()
         {
             return View();

@@ -1,12 +1,82 @@
 ﻿@{
-    ViewData["Title"] = "Pagina Principal";
+    ViewData["Title"] = "Inicio - Biblioteca";
 }
 
-<div class="text-center">
-   <h1>Sistema de Gestion de Biblioteca</h1>
-   <p>Bienvenido al sistema de gestion de biblioteca</p>
-</div>
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="text-muted">Copyright © 2026 - Leonel Tejada 2025010751</span>
+<!-- Sección Hero Estilo Biblioteca -->
+<div class="biblioteca-hero text-center mb-5">
+    <div class="hero-overlay">
+        <div class="container py-5">
+            <h1 class="display-4 titulo-biblioteca">Biblioteca Digital</h1>
+            <p class="lead subtitulo-biblioteca">Un espacio clásico para el conocimiento moderno. Explora nuestro catálogo de libros, autores y gestiona tus préstamos.</p>
+            <a asp-controller="Libros" asp-action="Index" class="btn btn-explorar btn-lg mt-3">Explorar Catálogo</a>
+        </div>
     </div>
+</div>
+
+<div class="container">
+    <!-- Sección de Estadísticas / Datos Rápidos -->
+    <div class="row text-center mb-5 quick-stats">
+        <div class="col-md-4">
+            <div class="stat-box">
+                <i class="bi bi-book-half fs-1 text-primary-custom"></i>
+                <h3 class="mt-2">+1,200</h3>
+                <p class="text-muted">Libros Disponibles</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-box">
+                <i class="bi bi-people-fill fs-1 text-primary-custom"></i>
+                <h3 class="mt-2">+350</h3>
+                <p class="text-muted">Autores Registrados</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-box">
+                <i class="bi bi-journal-check fs-1 text-primary-custom"></i>
+                <h3 class="mt-2">24/7</h3>
+                <p class="text-muted">Acceso Digital</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Servicios Diferenciados -->
+    <h2 class="text-center seccion-titulo mb-4">Servicios De La Biblioteca</h2>
+
+    <div class="row g-4">
+        <!-- Servicio 1: Libros -->
+        <div class="col-md-4">
+            <div class="card-servicio-biblio shadow-sm text-center">
+                <div class="icono-wrapper">
+                    <i class="bi bi-book"></i>
+                </div>
+                <h3>Gestión de Libros</h3>
+                <p>Administra y consulta información detallada sobre todos los libros y volúmenes disponibles en la biblioteca.</p>
+                <a asp-controller="Libros" asp-action="Index" class="btn btn-outline-custom btn-sm">Ir a Libros</a>
+            </div>
+        </div>
+
+        <!-- Servicio 2: Autores -->
+        <div class="col-md-4">
+            <div class="card-servicio-biblio shadow-sm text-center">
+                <div class="icono-wrapper">
+                    <i class="bi bi-person-lines-fill"></i>
+                </div>
+                <h3>Directorio de Autores</h3>
+                <p>Explora las biografías, nacionalidades y listas completas de las mentes detrás de tus obras favoritas.</p>
+                <a asp-controller="Autor" asp-action="Index" class="btn btn-outline-custom btn-sm">Ir a Autores</a>
+            </div>
+        </div>
+
+        <!-- Servicio 3: Préstamos -->
+        <div class="col-md-4">
+            <div class="card-servicio-biblio shadow-sm text-center">
+                <div class="icono-wrapper">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+                <h3>Control de Préstamos</h3>
+                <p>Lleva un registro estricto de los libros prestados, usuarios activos, fechas de entrega y devoluciones.</p>
+                <a asp-controller="Prestamos" asp-action="Index" class="btn btn-outline-custom btn-sm">Ver Préstamos</a>
+            </div>
+        </div>
+    </div>
+</div>

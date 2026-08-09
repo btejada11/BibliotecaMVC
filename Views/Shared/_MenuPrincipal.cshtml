@@ -1,35 +1,49 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container-fluid">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EjercicioPractica_S1</a>
+﻿<nav class="navbar navbar-expand-lg navbar-dark custom-navbar border-bottom-gold box-shadow">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand brand-literario" asp-area="" asp-controller="Home" asp-action="Index">
+            <i class="bi bi-bank me-2 text-gold"></i>EjercicioPractica_S1
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-            <ul class="navbar-nav flex-grow-1">
+            <ul class="navbar-nav flex-grow-1 header-links">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house-door me-1"></i> Inicio
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Libros" asp-action="Index">Libros</a>
+                    <a class="nav-link" asp-area="" asp-controller="Libros" asp-action="Index">
+                        <i class="bi bi-book me-1"></i> Libros
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Autor" asp-action="Index">Autores</a>
+                    <a class="nav-link" asp-area="" asp-controller="Autor" asp-action="Index">
+                        <i class="bi bi-people me-1"></i> Autores
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Categorias">Categorías</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Categorias">
+                        <i class="bi bi-tags me-1"></i> Categorías
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Usuarios">Usuarios</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Usuarios">
+                        <i class="bi bi-person-badge me-1"></i> Usuarios
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Prestamos">Prestamos</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Prestamos">
+                        <i class="bi bi-calendar-range me-1"></i> Préstamos
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AcercaDe">Acerca de</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">
+                        <i class="bi bi-info-circle me-1"></i> Acerca de
+                    </a>
                 </li>
-
-                     
             </ul>
         </div>
     </div>

@@ -38,7 +38,6 @@ body {
     font-size: 1.4rem;
     letter-spacing: 1px;
 }
-
 .navbar .nav-link {
     font-weight: 500;
     transition: all 0.3s ease;
@@ -46,8 +45,735 @@ body {
     margin: 0 4px;
     padding: 8px 14px;
 }
-
-    .navbar .nav-link:hover {
+.navbar .nav-link:hover {
         background-color: rgba(255,255,255,0.2);
         transform: translateY(-2px);
     }
+
+    /*========================= Variables ========================= */
+
+:root {
+    --color-principal: #258cfb;
+    --color-secundario: #f5f5f5;
+    --color-texto: #333333;
+    --color-blanco: #ffffff;
+}
+.about-header {
+    background: var(--color-principal);
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 40px;
+
+}
+.about-container{
+    display: flex;
+    gap: 25px;
+    padding: 40px;
+}
+.about-content {
+    flex: 3;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    
+}
+.about-content:hover{
+    transform: translate3d(-5px)
+
+}
+.about-info {
+    flex: 1;
+    background: #eef5ff;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.team-section{
+    padding: 20px 40px;
+}
+
+.team-section img {
+        width: 100%;
+        
+        border-radius: 10px;
+    }
+    .team-section figcaption {
+        text-align: center;
+        margin-top: 10px;
+        color:dimgray;
+        font-style:italic;
+
+    }
+@media(max-width: 768px) {
+
+    .about-container {
+        flex-direction: column;
+    }
+}
+.contenedor-libros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+.card-libro {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: calc(25% - 15px); 
+    min-width: 250px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-libro:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+.imagen-libro {
+    width: 100%;
+    height: 200px;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+    .imagen-libro img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+    }
+
+
+.contenido-libro {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+    .contenido-libro h3 {
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+        color: #333333;
+    }
+
+    .contenido-libro p {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+        color: #555555;
+    }
+
+
+.estado {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: auto; 
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+    .estado.disponible {
+        background-color: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .estado.no-disponible {
+        background-color: #f8d7da;
+        color: #842029;
+    }
+
+
+@media (max-width: 992px) {
+    .card-libro {
+        width: calc(50% - 10px); 
+    }
+}
+
+
+@media (max-width: 576px) {
+    .card-libro {
+        width: 100%; 
+    }
+}
+
+
+.contenedor-autores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+
+.card-autor {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: calc(25% - 15px); 
+    min-width: 240px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+    .card-autor:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        border-color: #b0b0b0;
+    }
+
+
+.id-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #6c757d;
+    color: #ffffff;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+
+.contenido-autor {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+    .contenido-autor h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        padding-right: 40px; 
+        color: #212529;
+    }
+
+    .contenido-autor p {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        color: #495057;
+    }
+
+
+.estado-autor {
+    margin-top: auto; 
+    padding-top: 10px;
+}
+
+    .estado-autor .badge {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+
+@media (max-width: 992px) {
+    .card-autor {
+        width: calc(50% - 10px); 
+    }
+}
+
+
+@media (max-width: 576px) {
+    .card-autor {
+        width: 100%; 
+    }
+}
+:root {
+    --color-madera: #4a2c11;
+    --color-oro-viejo: #b8860b;
+    --color-crema: #fdfbf7;
+    --color-texto-oscuro: #2b1a0a;
+}
+.titulo-biblioteca, .seccion-titulo {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--color-texto-oscuro);
+    font-weight: 700;
+}
+.biblioteca-hero {
+    background-image: url('https://unsplash.com'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: #ffffff;
+    border-bottom: 5px solid var(--color-oro-viejo);
+}
+.hero-overlay {
+    background-color: rgba(43, 26, 10, 0.85);
+    padding: 60px 20px;
+}
+.subtitulo-biblioteca {
+    color: #dfd5ca;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.btn-explorar {
+    background-color: var(--color-oro-viejo);
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+}
+    .btn-explorar:hover {
+        background-color: #966f0a;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+.stat-box {
+    background-color: var(--color-crema);
+    border: 1px solid #eadecc;
+    padding: 20px;
+    border-radius: 8px;
+}
+.text-primary-custom {
+    color: var(--color-oro-viejo);
+}
+.card-servicio-biblio {
+    background-color: var(--color-crema);
+    border: 1px solid #eadecc;
+    border-radius: 8px;
+    padding: 30px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+    .card-servicio-biblio:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(74, 44, 17, 0.1) !important;
+        border-color: var(--color-oro-viejo);
+    }
+.icono-wrapper {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(184, 134, 11, 0.1);
+    color: var(--color-oro-viejo);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.card-servicio-biblio h3 {
+    font-size: 1.3rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    margin-bottom: 15px;
+    color: var(--color-texto-oscuro);
+}
+.card-servicio-biblio p {
+    font-size: 0.9rem;
+    color: #5a4b3c;
+    flex-grow: 1; 
+    margin-bottom: 20px;
+}
+.btn-outline-custom {
+    border: 1px solid var(--color-madera);
+    color: var(--color-madera);
+    font-weight: 600;
+    padding: 6px 20px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+    .btn-outline-custom:hover {
+        background-color: var(--color-madera);
+        color: #ffffff;
+    }
+.custom-navbar {
+    background-color: #2b1a0a !important; 
+    padding: 12px 0 !important;
+}
+.border-bottom-gold {
+    border-bottom: 3px solid #b8860b !important; 
+}
+.brand-literario {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ffffff !important;
+}
+.text-gold {
+    color: #b8860b !important;
+}
+.header-links .nav-link {
+    color: #dfd5ca !important; 
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    margin-right: 5px;
+    background: transparent !important; 
+}
+    .header-links .nav-link:hover {
+        color: #b8860b !important; 
+    }
+.about-header {
+    background-image: url('https://unsplash.com');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    border-bottom: 5px solid #b8860b;
+}
+
+.about-hero-overlay {
+    background-color: rgba(43, 26, 10, 0.85); 
+    padding: 50px 20px;
+}
+
+.titulo-biblioteca-about {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.subtitulo-biblioteca-about {
+    color: #dfd5ca;
+    font-size: 1.1rem;
+}
+.about-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+.about-content {
+    flex: 2;
+}
+
+.seccion-titulo-about {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #2b1a0a;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eadecc;
+    padding-bottom: 10px;
+}
+
+.about-content p {
+    color: #4a3e3d;
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+.about-info {
+    flex: 1; 
+    min-width: 280px;
+}
+.card-mision-vision {
+    background-color: #fdfbf7;
+    border: 1px solid #eadecc;
+    border-radius: 8px;
+    padding: 25px;
+}
+
+    .card-mision-vision h3 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.3rem;
+        color: #2b1a0a;
+        margin-bottom: 12px;
+    }
+
+    .card-mision-vision p {
+        font-size: 0.9rem;
+        color: #5a4b3c;
+        line-height: 1.6;
+    }
+.team-section {
+    display: flex;
+    justify-content: center;
+}
+
+.figure-biblioteca {
+    max-width: 650px;
+    border: 1px solid #eadecc;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fdfbf7;
+    transition: transform 0.3s ease;
+}
+
+    .figure-biblioteca:hover {
+        transform: scale(1.02);
+    }
+
+    .figure-biblioteca img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+.bg-crema {
+    background-color: #fdfbf7 !important;
+}
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-info {
+        width: 100%;
+    }
+}
+.seccion-titulo-pagina {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #2b1a0a;
+    font-weight: 700;
+}
+
+.border-bottom-gold-sub {
+    border-bottom: 2px solid #eadecc;
+}
+.card-control-biblioteca {
+    background-color: #fdfbf7;
+    border: 1px solid #eadecc;
+    border-radius: 8px;
+}
+
+    .card-control-biblioteca h5 {
+        font-family: 'Playfair Display', Georgia, serif;
+        color: #2b1a0a;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+.label-control-id {
+    background-color: #4a2c11;
+    color: #ffffff;
+    border: 1px solid #4a2c11;
+    font-size: 0.9rem;
+}
+
+.input-control-id {
+    border-color: #eadecc;
+}
+
+    .input-control-id:focus {
+        border-color: #b8860b;
+        box-shadow: 0 0 0 0.2rem rgba(184, 134, 11, 0.25);
+    }
+.btn-warning-custom {
+    background-color: #ffc107;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0 15px;
+}
+
+.btn-info-custom {
+    background-color: #17a2b8;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0 15px;
+}
+
+.btn-danger-custom {
+    background-color: #dc3545;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0 15px;
+    color: white;
+}
+.contenedor-autores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+.card-autor-literaria {
+    display: flex;
+    flex-direction: column;
+    background-color: #fdfbf7;
+    border: 1px solid #eadecc;
+    border-radius: 8px;
+    width: calc(25% - 15px); 
+    min-width: 250px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+    .card-autor-literaria:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 18px rgba(74, 44, 17, 0.12) !important;
+        border-color: #b8860b;
+    }
+.id-badge-autor {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #4a2c11;
+    color: #ffffff;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.contenido-autor-literaria {
+    padding: 25px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+    .contenido-autor-literaria h3 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #2b1a0a;
+        margin-bottom: 15px;
+        padding-right: 45px; 
+    }
+.datos-autor-meta p {
+    font-size: 0.9rem;
+    color: #5a4b3c;
+    margin-bottom: 8px;
+}
+.estado-autor-badge {
+    margin-top: auto;
+    padding-top: 15px;
+}
+.badge-custom-disponible {
+    background-color: rgba(25, 135, 84, 0.15);
+    color: #198754;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+.badge-custom-no-disponible {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+@media (max-width: 992px) {
+    .card-autor-literaria {
+        width: calc(50% - 10px);
+    }
+}
+@media (max-width: 576px) {
+    .card-autor-literaria {
+        width: 100%;
+    }
+}
+.contenedor-libros-literaria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+.card-libro-literaria {
+    display: flex;
+    flex-direction: column;
+    background-color: #fdfbf7;
+    border: 1px solid #eadecc;
+    border-radius: 8px;
+    width: calc(25% - 15px);
+    min-width: 250px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+    .card-libro-literaria:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 18px rgba(74, 44, 17, 0.12) !important;
+        border-color: #b8860b; 
+    }
+.id-badge-libro {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(43, 26, 10, 0.75); 
+    color: #ffffff;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 10;
+}
+.imagen-libro-literaria {
+    width: 100%;
+    height: 220px;
+    background-color: #f5ece1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #eadecc;
+}
+    .imagen-libro-literaria img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+    }
+
+
+.contenido-libro-literaria {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+    .contenido-libro-literaria h3 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.15rem;
+        font-weight: bold;
+        color: #2b1a0a;
+        margin-bottom: 12px;
+        line-height: 1.3;
+    }
+
+.datos-libro-meta p {
+    font-size: 0.88rem;
+    color: #5a4b3c;
+    margin-bottom: 6px;
+}
+
+.precio-texto {
+    font-weight: bold;
+    color: #2b1a0a;
+}
+
+
+.estado-libro-badge {
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+
+@media (max-width: 992px) {
+    .card-libro-literaria {
+        width: calc(50% - 10px);
+    }
+
+}
+
+@media (max-width: 576px) {
+    .card-libro-literaria {
+        width: 100%;
+    }
+
+}
+

@@ -1,15 +1,76 @@
-﻿
+﻿@model IEnumerable<EjercicioPractica_S1.Models.Autor>
 
 @{
+    ViewData["Title"] = "Listado de Autores";
 }
-<div class="row mb-4">
-    <div class="col-md-6">
-        <div class="card bg-light p-3">
-            <h5>Ingrese el ID del Autor</h5>
 
+<div class="container mt-4 mb-5">
+    <!-- Encabezado de la Sección -->
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom-gold-sub">
+        <h2 class="seccion-titulo-pagina">Listado de Autores</h2>
+        <a asp-action="Create" class="btn btn-explorar btn-sm font-weight-bold shadow-sm">
+            <i class="bi bi-plus-circle me-1"></i> Agregar Nuevo Autor
+        </a>
+    </div>
 
-{
+    <!-- Mensaje de Alerta si el ID no existe en el controlador -->
+    @if (TempData["ErrorId"] != null)
+    {
+        <div class="alert alert-danger shadow-sm border-0 mb-4" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["ErrorId"]
+        </div>
+    }
 
-                </p>
-}
+    <!-- Caja de Control Centralizada Estilo Biblioteca -->
+    <div class="row mb-4 justify-content-start">
+        <div class="col-md-7 col-lg-6">
+            <div class="card card-control-biblioteca p-3 shadow-sm">
+                <h5 class="mb-3"><i class="bi bi-sliders2-vertical me-2 text-gold"></i>Acciones por ID de Autor</h5>
+                <form asp-action="ProcesarAccionId" method="get">
+                    <div class="input-group">
+                        <span class="input-group-text label-control-id">ID Autor:</span>
+                        <input type="number" name="id" class="form-control input-control-id" placeholder="Ej: 1" required min="1" />
+                        <button type="submit" name="accion" value="Edit" class="btn btn-warning-custom btn-sm">Editar</button>
+                        <button type="submit" name="accion" value="Details" class="btn btn-info-custom btn-sm text-white">Detalles</button>
+                        <button type="submit" name="accion" value="Delete" class="btn btn-danger-custom btn-sm">Eliminar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Listado en formato de Tarjetas Literarias -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="contenedor-autores">
+            @foreach (var autor in Model)
+            {
+                <div class="card-autor-literaria shadow-sm">
+                    <div class="id-badge-autor"><i class="bi bi-hash"></i>@autor.ID</div>
+                    <div class="contenido-autor-literaria">
+                        <h3>@autor.Nombre</h3>
+                        <div class="datos-autor-meta">
+                            <p><i class="bi bi-geo-alt-fill me-1 text-muted"></i> <strong>Nacionalidad:</strong> @autor.Nacionalidad</p>
+                            <p><i class="bi bi-calendar-event me-1 text-muted"></i> <strong>Nacimiento:</strong> @autor.FechaNacimiento.ToString("dd/MM/yyyy")</p>
+                        </div>
+                        
+                        <div class="estado-autor-badge">
+                            @if (autor.Activo)
+                            {
+                                <span class="badge badge-custom-disponible"><i class="bi bi-check-circle-fill me-1"></i>Activo</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-custom-no-disponible"><i class="bi bi-dash-circle-fill me-1"></i>Inactivo</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center border-0 shadow-sm bg-crema text-dark">No hay autores registrados en este momento.</div>
+    }
 </div>

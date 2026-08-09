@@ -51,69 +51,85 @@
 }*@
 
 @using EjercicioPractica_S1.Models
-
 @{
     List<Libro> libros = ViewBag.Libros;
+    ViewData["Title"] = "Catálogo de Libros";
 }
-<h1>Lista de Libros</h1>
 
-<h1>Lista de Libros Bonitos</h1>
+<div class="container mt-4 mb-5">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom-gold-sub">
+        <h2 class="seccion-titulo-pagina">Catálogo de Libros</h2>
+        <a asp-controller="Libros" asp-action="Create" class="btn btn-explorar btn-sm font-weight-bold shadow-sm">
+            <i class="bi bi-plus-circle me-1"></i> Crear Nuevo Libro
+        </a>
+    </div>
 
-<div class="row mb-4">
-    <div class="col-md-6">
-        <div class="card bg-light p-3">
-            <h5>Ingrese el ID del Libro</h5>
-
-            <form asp-controller="Libros" asp-action="ProcesarAccionId" method="get">
-                <div class="input-group">
-                    <span class="input-group-text">ID Libro:</span>
-                    <input type="number" name="id" class="form-control" placeholder="Ej: 5" required min="1" />
-
-                    <button type="submit" name="accion" value="Edit" class="btn btn-primary">Editar</button>
-                    <button type="submit" name="accion" value="Delete" class="btn btn-danger">Eliminar</button>
-                </div>
-            </form>
-
+ 
+    <div class="row mb-4 justify-content-start">
+        <div class="col-md-7 col-lg-6">
+            <div class="card card-control-biblioteca p-3 shadow-sm">
+                <h5 class="mb-3"><i class="bi bi-sliders2-vertical me-2 text-gold"></i>Acciones por ID de Libro</h5>
+                <form asp-controller="Libros" asp-action="ProcesarAccionId" method="get">
+                    <div class="input-group">
+                        <span class="input-group-text label-control-id">ID Libro:</span>
+                        <input type="number" name="id" class="form-control input-control-id" placeholder="Ej: 5" required min="1" />
+                        <button type="submit" name="accion" value="Edit" class="btn btn-warning-custom btn-sm">Editar</button>
+                        <button type="submit" name="accion" value="Details" class="btn btn-info-custom btn-sm text-white">Detalles</button>
+                        <button type="submit" name="accion" value="Delete" class="btn btn-danger-custom btn-sm">Eliminar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+
+
+    @if (libros != null && libros.Any())
+    {
+        <div class="contenedor-libros-literaria">
+            @foreach (var libro in libros)
+            {
+                <div class="card-libro-literaria shadow-sm">
+                    <!-- ID badge visible en la esquina superior de la tarjeta -->
+                    <div class="id-badge-libro"><i class="bi bi-hash"></i>ID</div>
+                    
+                    <div class="imagen-libro-literaria">
+                        @if (!string.IsNullOrEmpty(libro.ImagenUrl))
+                        {
+                            <img src="@Url.Content(libro.ImagenUrl)" alt="@libro.Titulo" />
+                        }
+                        else
+                        {
+                            <img src="~/images/default.png" alt="Imagen no disponible" />
+                        }
+                    </div>
+                    
+                    <div class="contenido-libro-literaria">
+                        <h3>@libro.Titulo</h3>
+                        <div class="datos-libro-meta">
+                            <p><i class="bi bi-person-fill me-1 text-muted"></i> <strong>Autor:</strong> @libro.Autor</p>
+                            <p><i class="bi bi-tag-fill me-1 text-muted"></i> <strong>Categoría:</strong> @libro.Categoria</p>
+                            <p><i class="bi bi-cash-coin me-1 text-muted"></i> <strong>Precio:</strong> <span class="precio-texto">$@libro.Precio</span></p>
+                        </div>
+                        
+                        <div class="estado-libro-badge">
+                            @if (libro.Disponible)
+                            {
+                                <span class="badge badge-custom-disponible"><i class="bi bi-check-circle-fill me-1"></i>Disponible</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-custom-no-disponible"><i class="bi bi-dash-circle-fill me-1"></i>No disponible</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center border-0 shadow-sm bg-crema text-dark">No se encontraron libros disponibles en este momento.</div>
+    }
 </div>
 
-<div class="mb-3">
-    <a asp-controller="Libros" asp-action="Create" class="btn btn-success">
-        <i class="bi bi-plus-circle"></i> Crear Nuevo Libro
-    </a>
-</div>
-
-@if (libros != null && libros.Any())
-{
-@foreach (var libro in libros)
-{
-    <tr>
-                <!-- Columna para la imagen -->
-                <td style="width: 160px; text-align: center; vertical-align: middle;">
-                    @if (!string.IsNullOrEmpty(libro.ImagenUrl))
-                    {
-                        <!-- Corrección con Url.Content -->
-                        <img src="@Url.Content("~" + libro.ImagenUrl)" alt="@libro.Titulo" class="img-fluid rounded" style="max-height: 150px; object-fit: cover;" />
-                    }
-                    else
-                    {
-                        <img src="~/images/default.png" alt="Sin imagen" class="img-fluid rounded" style="max-height: 150px; object-fit: cover;" />
-                    }
-                </td>
-        <td>
-            <h2>@libro.Titulo</h2>
-            <p>
-                @if (libro.Disponible)
-                {
-                }
-                else
-                {
-                }       
-
-
-            </p>
-        </td>
-    </tr>
-    </table>
-}
