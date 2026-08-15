@@ -1,7 +1,8 @@
 ﻿@{
-    ViewData["Title"] = "Inicio - Biblioteca";
-}
 
+    ViewData["Title"] = "Inicio - Biblioteca";          
+    @using EjercicioPractica_S1.Models
+}
 <!-- Sección Hero Estilo Biblioteca -->
 <div class="biblioteca-hero text-center mb-5">
     <div class="hero-overlay">
@@ -40,43 +41,15 @@
     </div>
 
     <!-- Sección de Servicios Diferenciados -->
-    <h2 class="text-center seccion-titulo mb-4">Servicios De La Biblioteca</h2>
-
-    <div class="row g-4">
-        <!-- Servicio 1: Libros -->
-        <div class="col-md-4">
-            <div class="card-servicio-biblio shadow-sm text-center">
-                <div class="icono-wrapper">
-                    <i class="bi bi-book"></i>
-                </div>
-                <h3>Gestión de Libros</h3>
-                <p>Administra y consulta información detallada sobre todos los libros y volúmenes disponibles en la biblioteca.</p>
-                <a asp-controller="Libros" asp-action="Index" class="btn btn-outline-custom btn-sm">Ir a Libros</a>
-            </div>
-        </div>
-
-        <!-- Servicio 2: Autores -->
-        <div class="col-md-4">
-            <div class="card-servicio-biblio shadow-sm text-center">
-                <div class="icono-wrapper">
-                    <i class="bi bi-person-lines-fill"></i>
-                </div>
-                <h3>Directorio de Autores</h3>
-                <p>Explora las biografías, nacionalidades y listas completas de las mentes detrás de tus obras favoritas.</p>
-                <a asp-controller="Autor" asp-action="Index" class="btn btn-outline-custom btn-sm">Ir a Autores</a>
-            </div>
-        </div>
-
-        <!-- Servicio 3: Préstamos -->
-        <div class="col-md-4">
-            <div class="card-servicio-biblio shadow-sm text-center">
-                <div class="icono-wrapper">
-                    <i class="bi bi-calendar-check"></i>
-                </div>
-                <h3>Control de Préstamos</h3>
-                <p>Lleva un registro estricto de los libros prestados, usuarios activos, fechas de entrega y devoluciones.</p>
-                <a asp-controller="Prestamos" asp-action="Index" class="btn btn-outline-custom btn-sm">Ver Préstamos</a>
+    <div class="container mt-5">
+        <h2 class="text-center seccion-titulo mb-4">Servicios De La Biblioteca</h2>
+        <div class="row">
+            <div class="row g-4">
+                @await Html.PartialAsync("_ServiceCard", new EjercicioPractica_S1.Models.ServiceClass { ImageUrl = "/images/libros.jpg", Title = "Gestión de Libros", Text = "(1)Administra y consulta información detallada sobre todos los libros y volúmenes disponibles en la biblioteca.", Controller = "Libros", Action = "Index" })
+                @await Html.PartialAsync("_ServiceCard", new EjercicioPractica_S1.Models.ServiceClass { ImageUrl = "/images/autores.jpg", Title = "Directorio de Autores", Text = "(2)Explora las biografías, nacionalidades y listas completas de las mentes detrás de tus obras favoritas.", Controller = "Autor", Action = "Index" })
+                @await Html.PartialAsync("_ServiceCard", new EjercicioPractica_S1.Models.ServiceClass { ImageUrl = "/images/prestamos.jpg", Title = "Control de Préstamos", Text = "(3)Lleva un registro estricto de los libros prestados, usuarios activos, fechas de entrega y devoluciones.", Controller = "Prestamos", Action = "Index" })
             </div>
         </div>
     </div>
+   
 </div>
