@@ -1,54 +1,63 @@
 ﻿@{
     ViewData["Title"] = "Acerca de";
+  
 }
 
-<header class="about-header text-center">
-    <div class="about-hero-overlay">
-        <h1 class="titulo-biblioteca-about">Biblioteca MVC</h1>
-        <p class="subtitulo-biblioteca-about">Sistema web para la administración y consulta de información de biblioteca</p>
-    </div>
-</header>
+@using EjercicioPractica_S1.Models;
+
+@await Html.PartialAsync("_BannerHeader", new BannerViewModel
+{
+    Title = "Conoce Biblioteca MVC",
+    Subtitle = "Plataforma académica e institucional dedicada a la preservación y el estudio moderno.",
+    BackgroundImage = "https://unsplash.com"
+})
 
 <div class="container my-5">
+
     <section class="about-container">
-        <!-- Columna Principal: Quiénes Somos -->
+
         <article class="about-content">
-            <h2 class="seccion-titulo-about">¿Quiénes Somos?</h2>
-            <p>
+            <h2 class="seccion-titulo-about mb-3"><i class="bi bi-building me-2 text-primary-custom"></i>Nuestra Identidad</h2>
+            <p class="text-justify">
                 Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
             </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+            <p class="text-justify">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu.
             </p>
         </article>
 
-        <!-- Columna Lateral: Misión y Visión -->
+       
         <aside class="about-info">
-            <div class="card-mision-vision shadow-sm">
-                <h3><i class="bi bi-compass me-2 text-gold"></i>Misión</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
-                </p>
+
+      
+            @await Html.PartialAsync("_FeatureCard", new FeatureViewModel
+            {
+                IconClass = "bi bi-compass text-gold fs-4",
+                Title = "Misión Institucional",
+                Text = "Proveer soluciones accesibles para conectar a estudiantes con recursos literarios de la más alta calidad mediante tecnologías web estables.",
+                BorderColor = "#1e3c72"
+            })
+
+           
+            <div class="card-vision">
+                @await Html.PartialAsync("_FeatureCard", new FeatureViewModel
+                {
+                    IconClass = "bi bi-eye text-gold fs-4",
+                    Title = "Visión de Futuro",
+                    Text = "Convertirnos en el estándar de software académico para la administración eficaz de centros de información digital en la región.",
+                    BorderColor = "#d4af37"
+                })
             </div>
-            
-            <div class="card-mision-vision shadow-sm mt-4">
-                <h3><i class="bi bi-eye me-2 text-gold"></i>Visión</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
-                </p>
-            </div>
+
         </aside>
     </section>
 
-    <!-- Sección de Imagen / Galería -->
+ 
     <section class="team-section text-center mt-5">
-        <figure class="figure-biblioteca shadow">
-            <img src="https://unsplash.com" alt="Biblioteca" class="img-fluid rounded-top" />
-            <figcaption class="p-3 bg-crema text-dark font-italic border-top">
-                <i class="bi bi-bookmark-star-fill text-gold me-1"></i> Biblioteca desarrollada por MVC
+        <figure class="figure-biblioteca shadow-lg">
+            <img src="https://unsplash.com" alt="Sistemas de Información" class="img-fluid rounded-top" />
+            <figcaption class="p-3 bg-crema text-dark border-top font-semibold">
+                <i class="bi bi-shield-check text-success me-1"></i> Sistema de Gestión Protegido y Certificado por el Núcleo MVC
             </figcaption>
         </figure>
     </section>

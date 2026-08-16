@@ -777,3 +777,456 @@ body {
 
 }
 
+
+
+/*Semana 5 Actividad*/
+
+.quick-stats, .contenedor-flex {
+    display: flex;
+    gap: 20px; 
+    justify-content: center;
+}
+
+.stat-box {
+    flex: 1; 
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+
+.sin-responsive {
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+    .sin-responsive > * {
+        flex: 1; 
+        min-width: 250px; 
+    }
+
+
+.media-query {
+    flex-direction: row;
+    flex-wrap: wrap; 
+}
+
+    .media-query > * {
+        flex: 1 1 calc(33.333% - 20px); 
+    }
+
+
+@media (max-width: 768px) {
+    .quick-stats {
+        flex-direction: column;
+
+        .media-query {
+            flex-direction: column;
+        }
+
+            .media-query > * {
+                width: 100%;
+            }
+    }
+}
+
+
+/* --- ACTIVIDAD 2: DISEÑO CON CSS GRID --- */
+
+.biblioteca-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+  
+    grid-auto-rows: minmax(180px, auto);
+}
+
+
+.grid-item {
+    background-color: #343a40;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: flex-end; 
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .grid-item:hover {
+        transform: translateY(-5px);
+    }
+
+
+.item-grande {
+    grid-column: span 2;
+    grid-row: span 2;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    align-items: center; 
+}
+
+
+.cat-ciencia {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.cat-historia {
+    background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+}
+
+.item-anuncio {
+    background-color: #6c757d;
+}
+
+.item-autores {
+    background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+    grid-column: span 2; 
+}
+
+
+@media (max-width: 992px) {
+    .biblioteca-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .item-grande {
+        grid-column: span 2; 
+    }
+
+    .item-autores {
+        grid-column: span 2;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .biblioteca-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .item-grande, .item-autores {
+        grid-column: span 1; 
+        grid-row: span 1;
+    }
+}
+
+
+/* --- ACTIVIDAD 3: DISEÑO ADAPTABLE PARA LA PÁGINA ABOUT --- */
+
+
+.about-container {
+    display: flex;
+    flex-direction: row; 
+    gap: 40px; 
+    align-items: flex-start;
+}
+
+
+.about-content {
+    flex: 2; 
+}
+
+
+.about-info {
+    flex: 1; 
+    min-width: 280px; 
+}
+
+
+.card-mision-vision {
+    background-color: #ffffff;
+    border-left: 4px solid #ffc107; 
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+.figure-biblioteca {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .figure-biblioteca img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+.bg-crema {
+    background-color: #fcf8f2;
+}
+
+
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column; 
+        gap: 30px;
+    }
+
+    .about-content, .about-info {
+        width: 100%; 
+    }
+
+  
+    .about-info {
+        display: flex;
+        gap: 20px;
+    }
+
+        .about-info .card-mision-vision {
+            flex: 1;
+            margin-top: 0 !important; 
+        }
+}
+
+
+@media (max-width: 576px) {
+    .about-info {
+        flex-direction: column; 
+    }
+}
+
+:root {
+    --primary-library: #1e3c72;
+    --secondary-library: #2a5298;
+    --gold-accent: #d4af37;
+    --dark-neutral: #212529;
+    --light-neutral: #f8f9fa;
+    --crema-bg: #fcf8f2;
+}
+
+.text-primary-custom {
+    color: var(--primary-library);
+}
+
+.text-gold {
+    color: var(--gold-accent);
+}
+
+.bg-crema {
+    background-color: var(--crema-bg);
+}
+
+.about-header {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 60px 20px;
+    color: #ffffff;
+}
+
+.about-hero-overlay {
+    background: rgba(0, 0, 0, 0.55);
+    padding: 30px;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 800px;
+}
+
+
+.card-mision-vision {
+    background-color: #ffffff;
+    border-left: 5px solid var(--gold-accent);
+    padding: 24px;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .card-mision-vision:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1) !important;
+    }
+
+.card-vision {
+    margin-top: 24px;
+}
+
+
+.biblioteca-hero {
+    background: linear-gradient(rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)), url('https://unsplash.com') no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+
+.quick-stats, .contenedor-flex {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.stat-box {
+    flex: 1;
+    padding: 24px;
+    background-color: var(--light-neutral);
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+
+.sin-responsive {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto; 
+    padding-bottom: 10px;
+}
+
+    .sin-responsive > * {
+        flex: 1 0 280px; 
+    }
+
+
+.media-query {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+    .media-query > * {
+        flex: 1 1 calc(33.333% - 20px);
+    }
+
+.biblioteca-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.grid-item {
+    background-color: var(--dark-neutral);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .grid-item:hover {
+        transform: translateY(-5px);
+    }
+
+
+.item-grande {
+    grid-column: span 2;
+    grid-row: span 2;
+    background: linear-gradient(135deg, var(--primary-library) 0%, var(--secondary-library) 100%);
+    align-items: center;
+}
+
+.cat-ciencia {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.cat-historia {
+    background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+}
+
+.item-anuncio {
+    background-color: #6c757d;
+}
+
+.item-autores {
+    background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+    grid-column: span 2;
+}
+
+
+.about-container {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.about-content {
+    flex: 2;
+}
+
+.about-info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.figure-biblioteca {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .figure-biblioteca img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+
+@media (max-width: 992px) {
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-content, .about-info {
+        width: 100%;
+    }
+
+    .about-info {
+        display: flex;
+        gap: 20px;
+    }
+
+    .card-vision {
+        margin-top: 0;
+    }
+
+    .biblioteca-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item-grande, .item-autores {
+        grid-column: span 2;
+    }
+}
+
+
+@media (max-width: 768px) {
+ 
+    .quick-stats, .media-query {
+        flex-direction: column;
+    }
+
+        .media-query > * {
+            width: 100%;
+        }
+}
+
+
+@media (max-width: 576px) {
+  
+    .about-info {
+        flex-direction: column;
+    }
+
+    .biblioteca-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .item-grande, .item-autores {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}

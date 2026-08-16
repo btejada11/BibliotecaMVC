@@ -1,55 +1,99 @@
 ﻿@{
-
-    ViewData["Title"] = "Inicio - Biblioteca";          
+    ViewData["Title"] = "Inicio - Biblioteca";
     @using EjercicioPractica_S1.Models
 }
+
 <!-- Sección Hero Estilo Biblioteca -->
-<div class="biblioteca-hero text-center mb-5">
+<div class="biblioteca-hero text-center mb-5 py-5">
     <div class="hero-overlay">
-        <div class="container py-5">
-            <h1 class="display-4 titulo-biblioteca">Biblioteca Digital</h1>
-            <p class="lead subtitulo-biblioteca">Un espacio clásico para el conocimiento moderno. Explora nuestro catálogo de libros, autores y gestiona tus préstamos.</p>
-            <a asp-controller="Libros" asp-action="Index" class="btn btn-explorar btn-lg mt-3">Explorar Catálogo</a>
+        <div class="container py-4">
+            <h1 class="display-4 titulo-biblioteca text-white fw-bold">Biblioteca Digital</h1>
+            <p class="lead subtitulo-biblioteca text-white-50">Un espacio clásico para el conocimiento moderno. Explora nuestro catálogo de libros, autores y gestiona tus préstamos.</p>
+            <a asp-controller="Libros" asp-action="Index" class="btn btn-warning btn-lg mt-3 fw-bold">Explorar Catálogo</a>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <!-- Sección de Estadísticas / Datos Rápidos -->
-    <div class="row text-center mb-5 quick-stats">
-        <div class="col-md-4">
-            <div class="stat-box">
-                <i class="bi bi-book-half fs-1 text-primary-custom"></i>
-                <h3 class="mt-2">+1,200</h3>
-                <p class="text-muted">Libros Disponibles</p>
-            </div>
+    <!-- Flexbox: Sección de Estadísticas Rápidas -->
+    <div class="quick-stats mb-5">
+        <div class="stat-box">
+            <i class="bi bi-book-half fs-1 text-primary-custom"></i>
+            <h3 class="mt-2 fw-bold">+1,200</h3>
+            <p class="text-muted mb-0">Libros Disponibles</p>
         </div>
-        <div class="col-md-4">
-            <div class="stat-box">
-                <i class="bi bi-people-fill fs-1 text-primary-custom"></i>
-                <h3 class="mt-2">+350</h3>
-                <p class="text-muted">Autores Registrados</p>
-            </div>
+        <div class="stat-box">
+            <i class="bi bi-people-fill fs-1 text-primary-custom"></i>
+            <h3 class="mt-2 fw-bold">+350</h3>
+            <p class="text-muted mb-0">Autores Registrados</p>
         </div>
-        <div class="col-md-4">
-            <div class="stat-box">
-                <i class="bi bi-journal-check fs-1 text-primary-custom"></i>
-                <h3 class="mt-2">24/7</h3>
-                <p class="text-muted">Acceso Digital</p>
-            </div>
+        <div class="stat-box">
+            <i class="bi bi-journal-check fs-1 text-primary-custom"></i>
+            <h3 class="mt-2 fw-bold">24/7</h3>
+            <p class="text-muted mb-0">Acceso Digital</p>
         </div>
     </div>
 
-    <!-- Sección de Servicios Diferenciados -->
-    <div class="container mt-5">
-        <h2 class="text-center seccion-titulo mb-4">Servicios De La Biblioteca</h2>
-        <div class="row">
-            <div class="row g-4">
-                @await Html.PartialAsync("_ServiceCard", new EjercicioPractica_S1.Models.ServiceClass { ImageUrl = "/images/libros.jpg", Title = "Gestión de Libros", Text = "(1)Administra y consulta información detallada sobre todos los libros y volúmenes disponibles en la biblioteca.", Controller = "Libros", Action = "Index" })
-                @await Html.PartialAsync("_ServiceCard", new EjercicioPractica_S1.Models.ServiceClass { ImageUrl = "/images/autores.jpg", Title = "Directorio de Autores", Text = "(2)Explora las biografías, nacionalidades y listas completas de las mentes detrás de tus obras favoritas.", Controller = "Autor", Action = "Index" })
-                @await Html.PartialAsync("_ServiceCard", new EjercicioPractica_S1.Models.ServiceClass { ImageUrl = "/images/prestamos.jpg", Title = "Control de Préstamos", Text = "(3)Lleva un registro estricto de los libros prestados, usuarios activos, fechas de entrega y devoluciones.", Controller = "Prestamos", Action = "Index" })
+    <!-- Flexbox: Caso 1 - Sin Responsive -->
+    <div class="section mb-5">
+        <h2 class="seccion-titulo mb-4"><i class="bi bi-hdd-stack me-2"></i>1. Vista de Bloques Continua (Sin Responsive)</h2>
+        <div class="contenedor-flex sin-responsive">
+            @await Html.PartialAsync("_ServiceCard", new ServiceClass { ImageUrl = "/images/libros.jpg", Title = "Gestión de Libros", Text = "(1) Administra y consulta información detallada sobre todos los libros.", Controller = "Libros", Action = "Index" })
+            @await Html.PartialAsync("_ServiceCard", new ServiceClass { ImageUrl = "/images/autores.jpg", Title = "Directorio de Autores", Text = "(2) Explora las biografías y listas completas de los escritores.", Controller = "Autor", Action = "Index" })
+            @await Html.PartialAsync("_ServiceCard", new ServiceClass { ImageUrl = "/images/prestamos.jpg", Title = "Control de Préstamos", Text = "(3) Lleva un registro estricto de libros prestados y devoluciones.", Controller = "Prestamos", Action = "Index" })
+        </div>
+    </div>
+
+    <!-- Flexbox: Caso 2 - Con Responsive Fluido -->
+    <div class="section mb-5">
+        <h2 class="seccion-titulo mb-4"><i class="bi bi-phone-flip me-2"></i>2. Distribución Fluida Inteligente (Con Responsive)</h2>
+        <div class="contenedor-flex media-query">
+            @await Html.PartialAsync("_ServiceCard", new ServiceClass { ImageUrl = "/images/libros.jpg", Title = "Gestión de Libros", Text = "(1) Administra y consulta información detallada sobre todos los libros.", Controller = "Libros", Action = "Index" })
+            @await Html.PartialAsync("_ServiceCard", new ServiceClass { ImageUrl = "/images/autores.jpg", Title = "Directorio de Autores", Text = "(2) Explora las biografías y listas completas de los escritores.", Controller = "Autor", Action = "Index" })
+            @await Html.PartialAsync("_ServiceCard", new ServiceClass { ImageUrl = "/images/prestamos.jpg", Title = "Control de Préstamos", Text = "(3) Lleva un registro estricto de libros prestados y devoluciones.", Controller = "Prestamos", Action = "Index" })
+        </div>
+    </div>
+
+    <!-- CSS GRID: Actividad 2 e Integración Visual Completa -->
+    <div class="section mb-5">
+        <h2 class="seccion-titulo mb-4"><i class="bi bi-grid-3x3-gap me-2"></i>3. Centro de Exploración Dinámico (CSS Grid)</h2>
+        <div class="biblioteca-grid">
+            <div class="grid-item item-grande">
+                <div class="grid-content">
+                    <span class="badge bg-warning text-dark mb-2 fw-bold">Recomendado</span>
+                    <h3>Libro Destacado del Mes</h3>
+                    <p>Descubre nuestra edición crítica digital de clásicos universales disponible sin costo este mes.</p>
+                    <a asp-controller="Libros" asp-action="Index" class="btn btn-sm btn-light fw-bold mt-2">Leer Obra</a>
+                </div>
+            </div>
+            <div class="grid-item item-categoria cat-ciencia">
+                <div class="grid-content">
+                    <i class="bi bi-cpu fs-2 mb-2 d-block"></i>
+                    <h4>Tecnología e IA</h4>
+                    <p class="small mb-0">+200 títulos técnicos modernos.</p>
+                </div>
+            </div>
+            <div class="grid-item item-categoria cat-historia">
+                <div class="grid-content">
+                    <i class="bi bi-hourglass-split fs-2 mb-2 d-block"></i>
+                    <h4>Historia Universal</h4>
+                    <p class="small mb-0">Crónicas detalladas y biografías.</p>
+                </div>
+            </div>
+            <div class="grid-item item-anuncio">
+                <div class="grid-content">
+                    <h5>¿Usuario Nuevo?</h5>
+                    <p class="small">Date de alta en minutos y obtén tu credencial virtual.</p>
+                    <a asp-controller="Home" asp-action="Privacy" class="btn btn-sm btn-outline-light">Registrarme</a>
+                </div>
+            </div>
+            <div class="grid-item item-autores">
+                <div class="grid-content">
+                    <i class="bi bi-award fs-3 text-warning mb-2"></i>
+                    <h4>Círculo de Autores Premiados</h4>
+                    <p class="mb-0">Accede de manera directa a entrevistas, notas manuscritas y bibliografías verificadas.</p>
+                </div>
             </div>
         </div>
     </div>
-   
 </div>

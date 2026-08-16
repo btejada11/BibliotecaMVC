@@ -1,12 +1,23 @@
-﻿ <!-- Servicio 1: Libros -->
-        <div class="col-md-4">
-            <div class="card-servicio-biblio shadow-sm text-center">
-                <div class="icono-wrapper">
-                    <i class="bi bi-book"></i>
-                    <img src="@Model.ImageUrl" alt="Icono de Libros" class="icono-servicio">
-                </div>
-                <h3>@Model.Title</h3>
-                <p>@Model.Text</p>
-                <a asp-controller="@Model.Controller" asp-action="@Model.Action" class="btn btn-outline-custom btn-sm">Ir a @Model.Title</a>
-            </div>
-        </div>
+﻿ @model EjercicioPractica_S1.Models.ServiceClass
+
+ <!-- Servicio 1: Libros -->
+ @if (Model == null)
+ {
+     <!-- No hay modelo; no renderizar la tarjeta -->
+ }
+ else
+ {
+     <div class="card-demo">
+         <div class="card shadow-sm">
+             <div class="icono-wrapper">
+                 <i class="bi bi-book"></i>
+                 <img src="@Model.ImageUrl" alt="Icono de Libros" class="card-img-top">
+             </div>
+             <h3>@Model.Title</h3>
+             <div class="card-body">
+                 <p>@Model.Text</p>
+                 <a asp-controller="@Model.Controller" asp-action="@Model.Action" class="btn btn-outline-custom btn-sm">Ir a @Model.Title</a>
+             </div>
+         </div>
+     </div>
+ }

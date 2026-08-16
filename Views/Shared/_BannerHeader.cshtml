@@ -1,0 +1,8 @@
+﻿@model EjercicioPractica_S1.Models.BannerViewModel
+
+<header class="about-header text-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('@(Model.BackgroundImage ?? "/images/default-hero.jpg")');">
+    <div class="about-hero-overlay">
+        <h1 class="titulo-biblioteca-about">@Model.Title</h1>
+        <p class="subtitulo-biblioteca-about">@Model.Subtitle</p>
+    </div>
+</header>

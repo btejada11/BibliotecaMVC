@@ -1,0 +1,12 @@
+﻿@model EjercicioPractica_S1.Models.FeatureViewModel
+
+<div class="card-mision-vision shadow-sm" style="border-left-color: @(Model.BorderColor ?? "#ffc107");">
+    <h3>
+        @if (!string.IsNullOrEmpty(Model.IconClass))
+        {
+            <i class="@Model.IconClass me-2"></i>
+        }
+        @Model.Title
+    </h3>
+    <p>@Model.Text</p>
+</div>
